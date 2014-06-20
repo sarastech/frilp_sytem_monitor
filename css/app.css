@@ -1,0 +1,38 @@
+.status-update {
+  margin-top: 20px;
+  padding-bottom:20px;
+  border-bottom:1px solid #eee;
+}
+
+.message {
+  font-size:14pt;
+  text-align:justify;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.message_v2 {
+	color:#333333;
+	font-size: 14pt;
+	font-weight: 400;
+	margin-bottom:10px;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+.positive {
+  color:#396;
+}
+
+.negative {
+  color:#d9534f;
+}
+
+.neutral {
+  color:#f29d50;
+}
+
+.timestamp {
+  font-size: 11pt;
+  color:#AFAFAF;
+  font-weight:600;
+}

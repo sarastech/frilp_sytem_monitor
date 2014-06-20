@@ -1,0 +1,156 @@
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <title>Frilp Status Monitor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/sticky-footer.css" rel="stylesheet">
+    <link href="../css/app.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../ico/favicon.png">
+  </head>
+
+  <body style="padding-top:50px;">
+<nav class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+  <div class="container23">
+		<div class="navbar-header">
+          <span class="navbar-brand" style="color: #F8EFEF;">Frilp System<b>Status</b>
+          </span>
+          
+        </div>
+  </div>
+</nav>
+		<div class="container main-pane" style="height:100%;">
+
+		  
+			<div class="col-xs-12 divider text-center" style="border-bottom: 1px solid #eee;">
+				<h2><strong class="positive"> All systems up and running! </strong></h2>
+				<h6 style="color: #AFAFAF;"><b>Need help? <a href="mailto:anish@frilp.com?Subject=Hey%20there" target="_top">Mail us</a> and we'll reach out to you ASAP!</b></h6>
+			</div>
+					  
+		  <div id="base">
+      	  </div>
+		</div>
+	  <script type="text/html" id="template_feed_main">
+	  	<div style="margin-top: 120px;">
+	  		<div class="status-update">
+	  			<div class="message_v2 positive">
+	  				Frilp is back online and operational. A total of around 3 million documents restored. Search and autocomplete are back online. All flows tested and working. 
+	  				Thanks a ton for bearing with our outage folks!  We are working on formulating a way to mitigate such external issues in the future.
+	  			</div>
+	  			<small class="timestamp" data_time="2014-06-20 19:15:24z">2014-06-20 19:15:24z</small>
+	  		</div>
+	  		
+	  		<div class="status-update">
+	  			<div class="message_v2 neutral">
+	  				Looking positive. Restoring and testing the test environment first to make sure everything is working!
+	  			</div>
+	  			<small class="timestamp" data_time="2014-06-20 16:45:43z">2014-06-20 16:45:43z</small>
+	  		</div>
+	  		
+	  		<div class="status-update">
+	  			<div class="message_v2 negative">
+	  				Autocomplete feature is still down system-wide. Option B didn't work out either. Bringing in the big guns! Thanks for being extremely patient with us folks!
+	  			</div>
+	  			<small class="timestamp" data_time="2014-06-20 10:36:52z">2014-06-20 10:36:52z</small>
+	  		</div>
+	  		
+	  		<div class="status-update">
+	  			<div class="message_v2 neutral">
+	  				Frilp is back online! Recommend, Ask and Comment flows are working. Autocomplete is still down owing to version changes being made by WebSolr. User-tagging and Category-tagging are currently unavailable due to this. Working on a fix.
+	  			</div>
+	  			<small class="timestamp" data_time="2014-06-20 05:23:48z">2014-06-20 05:23:48z</small>
+	  		</div>	
+	  		
+	  		<div class="status-update">
+	  			<div class="message_v2 positive">
+	  				Using this outage time to upgrade to SOLR 4. This should give us better search performance and faster page loads. Tweeking still needed!
+	  			</div>
+	  			<small class="timestamp" data_time="2014-06-20 02:37:18z">2014-06-20 02:37:18z</small>
+	  		</div>
+	  		
+	  		<div class="status-update">
+	  			<div class="message_v2 positive">
+	  				Using this outage time to upgrade to SOLR 4. This should give us better search performance and faster page loads. Tweeking still needed!
+	  			</div>
+	  			<small class="timestamp" data_time="2014-06-20 02:37:18z">2014-06-20 02:37:18z</small>
+	  		</div>	  				  		
+	  		
+	  		<h4 style="text-align: center; color: #75787A;">Activity Feed</h4>
+	  		<div id="content" style="overflow:hidden; width: 600px;"></div>
+	  	</div>
+	  </script>
+	  <script type="text/html" id="template_feed_card_request">
+	  	<div class="feed_card">
+	  		<p>
+	  			<span class="label label-primary">Q</span>&nbsp;
+	  			<a href="http://www.frilp.com/userprofile/<%= card_params.creator_id %>"><%= card_params.creator_name %></a>&nbsp;
+	  			has posted a question under <strong><%= card_params.category_name %></strong>&nbsp;
+	  			<p><h5><em><%= card_params.message.substr(0,50) %></em></h5></p>
+	  			<h5><small class="card_timestamp" data_time="<%= card_params.timestamp.substr(0,card_params.timestamp.length-4)+'z' %>">
+	  					<%= $.timeago(card_params.timestamp.substr(0,card_params.timestamp.length-4)+'z') %>
+	  				</small>
+	  			</h5>
+	  		</p>
+	  	</div>
+	  </script>
+	  
+	  <script type="text/html" id="template_feed_card_recommendation">
+	  	<div class="feed_card">
+	  		<p>
+	  			<span class="label label-success">R</span>&nbsp;
+	  			<a href="http://www.frilp.com/userprofile/<%= card_params.creator_id %>"><%= card_params.creator_name %></a>&nbsp;
+	  			has posted a recommendation under <strong><%= card_params.category_name %></strong>&nbsp;
+	  			<p><h5><em><%= card_params.message.substr(0,50) %></em></h5></p>
+	  			<h5><small class="card_timestamp" data_time="<%= card_params.timestamp.substr(0,card_params.timestamp.length-4)+'z' %>">
+	  					<%= $.timeago(card_params.timestamp.substr(0,card_params.timestamp.length-4)+'z') %>
+	  				</small>
+	  			</h5>
+	  		</p>
+	  	</div>
+	  </script>
+	 
+	  <script type="text/html" id="template_feed_card_comment">
+	  	<div class="feed_card">
+	  		<p>
+	  			<span class="label label-warning">C</span>&nbsp;
+	  			<a href="http://www.frilp.com/userprofile/<%= card_params.creator_id %>"><%= card_params.creator_name %></a>&nbsp;
+	  			has posted a comment&nbsp;
+	  			<p><h5><em><%= card_params.message.substr(0,50) %></em></h5></p>
+	  			<h5><small class="card_timestamp" data_time="<%= card_params.timestamp.substr(0,card_params.timestamp.length-4)+'z' %>">
+	  					<%= $.timeago(card_params.timestamp.substr(0,card_params.timestamp.length-4)+'z') %>
+	  				</small>
+	  			</h5>
+	  		</p>
+	  	</div>
+	  </script>
+
+    <!-- Javascript -->
+    <!-- Placed at the end of the document so that the page will load faster -->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/underscore.js"></script>
+    <script src="../js/backbone.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/backbone/app.js"></script>
+    <script src="../js/moment.min.js"></script>
+    <script src="../js/jquery.timeago.js"></script>
+    <script src="../js/countUp.min.js"></script>
+    <script src="../js/backbone/views/public/splash_view.js"></script>
+    <script src="../js/backbone/views/core/home_view.js"></script>
+	<script src="../js/backbone/routers/public_router.js"></script>
+	<script src="../js/backbone/routers/core_router.js"></script>
+	<script src="../js/backbone/initializer.js"></script>
+	<!--<script src="../css/bootstrap.css"></script>-->
+  
+
+</body>
+</html>
